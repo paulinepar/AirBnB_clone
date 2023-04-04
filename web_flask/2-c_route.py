@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''script that starts a Flask web application'''
-from flask import Flask, render_template
+from flask import Flask
 
 
 app = Flask(__name__)
@@ -16,9 +16,9 @@ def index_1():
     return "HBNB"
 
 
-@app.route("/c/<text>")
-def index2(text=None):
-    return render_template("C.html", C=text)
+@app.route("/c/<text>", strict_slashes=False)
+def index2(text):
+    return "C" + text.replace('_', ' ')
 
 
 if __name__ == '__main__':

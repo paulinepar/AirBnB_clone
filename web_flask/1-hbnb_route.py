@@ -9,14 +9,11 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def index():
-    '''return hello HBNB '''
     return "Hello HBNB!"
 
 @app.route("/hbnb", strict_slashes=False)
 def index():
-    '''return HBNB '''
     return "HBNB"
-
 
 
 if __name__ == '__main__':

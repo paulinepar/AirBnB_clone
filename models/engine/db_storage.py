@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' DBSTORAGE '''
+''' new engine DBSTORAGE'''
 
 import os
 from models.city import City
@@ -62,8 +62,5 @@ class DBStorage():
 
     def reload(self):
         """Loads storage dictionary from file"""
-        Base = declarative_base()
-        s = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(s)
-        Base.metadata.create_all(self.__engine)
-
+        print(self.__engine)
+        Base.metadata.create_all(bind=self.__engine)

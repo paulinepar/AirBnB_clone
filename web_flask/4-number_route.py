@@ -32,7 +32,7 @@ def index3(text):
 @app.route("/number/<int:n>")
 def index4(n):
     '''display n is a number just if is integer'''
-    return "n is a number" 
+    return f'{n} is a number'
 
 
 if __name__ == '__main__':

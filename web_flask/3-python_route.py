@@ -21,8 +21,9 @@ def index2(text):
     '''display 'C ' followed by the value of the text variable'''
     return "C " + text.replace('_', ' ')
 
-@app.route("/python/<text>")
-def index3(text= "is cool"):
+
+@app.route("/python/<text>", strict_slashes=False)
+def index3(text="is cool"):
     ''''display Python followed by the value of the text'''
     return "Python" + text.replace('_', ' ')
 

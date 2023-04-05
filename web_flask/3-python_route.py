@@ -15,13 +15,13 @@ def index():
 def index_1():
     return "HBNB"
 
-@app.route("/c/", strict_slashes=False)
 @app.route("/c/<text>", strict_slashes=False)
 def index2(text):
     '''display 'C ' followed by the value of the text variable'''
     return "C " + text.replace('_', ' ')
 
 
+@app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def index3(text="is cool"):
     ''''display Python followed by the value of the text'''

@@ -23,9 +23,10 @@ def index2(text):
 
 
 @app.route("/python/<text>", strict_slashes=False)
-def index3(text="is cool"):
+def index3(text):
     ''''display Python followed by the value of the text'''
-    return "Python" + "is cool".replace('_', ' ')
+    text = "is cool"
+    return "Python" + text.replace('_', ' ')
 
 
 if __name__ == '__main__':

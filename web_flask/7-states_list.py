@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-'''Before using Flask to display our HBNB data,
-you will need to update some part of our engine
-'''
-
+"""
+    Create flask application instance (app)
+"""
 
 from flask import Flask, render_template
-from models import *
+from markupsafe import escape
+from models.state import State
 from models import storage
 
 
@@ -14,13 +14,21 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def teardown_db(exception):
-    """ After each request remove the current SQLAlchemy """
+    """
+        after each request : remove current SQLAlchemy Session
+    """
     storage.close()
 
 
-@app.route('/states_list', strict_slashes=False)
+@app.route("/states_list", strict_slashes=False)
 def states_list():
-    """ display a HTML page"""
+    """
+        Display a HTML page:
+        h1 tag "States"
+        UL tag list of all State objects present in DBStorage
+            sorted by name(A->Z)
+            LI tag : description of one State:<state.id>: <B><state.name></B>
+    """
     states = storage.all(State)
 
     if states:

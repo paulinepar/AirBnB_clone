@@ -7,6 +7,8 @@ you will need to update some part of our engine
 from flask import Flask, render_template
 from models import *
 from models import storage
+
+
 app = Flask(__name__)
 
 
@@ -19,9 +21,13 @@ def teardown_db(exception):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ display a HTML page"""
-    print(storage.all("State"))
-    return render_template('7-states_list.html',
-                           states=storage.all("State"))
+    states = storage.all(State)
+
+    if states:
+        states_list = sorted(states.values(), key=lambda x: x.name)
+    else:
+        states_list = []
+    return render_template('7-states_list.html', states=states_list)
 
 
 if __name__ == '__main__':
